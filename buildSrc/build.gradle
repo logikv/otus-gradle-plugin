@@ -1,0 +1,34 @@
+plugins {
+    id 'groovy'
+    id 'groovy-gradle-plugin'
+}
+
+group = 'tech.bv4lo'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    gradlePluginPortal()
+}
+
+dependencies {
+    implementation 'org.apache.groovy:groovy:4.0.14'
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+gradlePlugin {
+    plugins {
+        greetPlugin {
+            id = "greeting"
+            implementationClass = 'GreetingPlugin'
+        }
+        licensePlugin {
+            id = "license"
+            implementationClass = 'LicensePlugin'
+        }
+    }
+}
